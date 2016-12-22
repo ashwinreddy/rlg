@@ -2,11 +2,11 @@ import numpy as np
 from gym import utils
 import mujoco_env
 
-class CustomEnv(mujoco_env.MujocoEnv, utils.EzPickle):
+class LiftCanEnv(mujoco_env.MujocoEnv, utils.EzPickle):
     def __init__(self):
         utils.EzPickle.__init__(self)
         #second param is frameskip
-        mujoco_env.MujocoEnv.__init__(self, 'custom.xml', 2)
+        mujoco_env.MujocoEnv.__init__(self, 'liftcan.xml', 2)
 
     def _step(self, a):
         living_cost = -0.2
