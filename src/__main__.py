@@ -1,8 +1,7 @@
-import custom
-import swimmer
-import inverted_pendulum
+from tasks import door
+from tasks import liftcan
 if __name__ == "__main__":
-    my_env = custom.CustomEnv()
+    my_env = liftcan.LiftCanEnv()
     obs = my_env.reset()
     done = False
     for _ in range(1000):
@@ -10,4 +9,3 @@ if __name__ == "__main__":
         action = my_env.action_space.sample()
         print action
         obs, reward, done, info = my_env.step(action)
-        #print my_env.model.nu, my_env.model.nv
