@@ -12,7 +12,7 @@ You will need `mujoco-py`, the Python bindings for MuJoCo, which is written in C
 
 ##Usage
 If all goes well, you should be able to run the `src/__main__.py` script of this package.
-Either run `python src/. hand` or `python src/. door` from the root folder (where ever you cloned this repository)
+Either run `python src/. hand` or `python src/. door` from the root folder (where ever you cloned this repository). Running with `hand` displays a pick-n-place task while running with `door` displays a simple hinged door.
 
 ##Available tasks and robots
 Tasks:
