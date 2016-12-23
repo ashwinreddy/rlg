@@ -32,13 +32,13 @@ Robots (downloaded using [MuJoCo Resources](http://www.mujoco.org/forum/index.ph
 9. Beam balance
 
 ##Todo List
-- [ ] Incorporate OpenAI Gym tasks
-- [ ] Clean up API, allow testing of algorithms
-- [ ] Base class for different environments (allow reward function to be overriden)
-- [ ] Debug Sandia Hand, STL files not loading for some reason?
-- [ ] Build website, add documentation (readme + wiki)
-- [ ] Define reward functions
-- [ ] Implement more tasks
+- [ ] Incorporate MuJoCo OpenAI Gym tasks (at least the ones that are semi-robotic)
+- [ ] Create a system where users can ask for tasks based on difficulty
+- [ ] Clean up API, allow easy testing of algorithms like Gym
+- [ ] Develop a base class for different environments since most MuJoCo tasks are fairly similar, main difference is the reward function
+- [ ] Debug the Sandia Hand robot: STL files not loading for some reason
+- [ ] Build website, add documentation (readme + wiki + website)
+- [ ] Implement more tasks and define reward functions for all tasks
 - [ ] Allow mix-and-match for robots and tasks
-- [ ] Develop code to facilitate transfer Learning
-- [ ] Implement various RL algorithms as benchmarks
+- [ ] Develop code to facilitate transfer learning (group tasks by similarity)
+- [ ] Implement various RL algorithms as benchmarks 
