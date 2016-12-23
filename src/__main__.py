@@ -1,14 +1,15 @@
+import sys
 from tasks import liftcan, door, snake, beam_balance
 from robots import baxter, darwin, claw, hand, barrett, sandia_hand, atlas, atlas_virtual, pr2, jaco
 
-task_choices = {
+task = {
     'liftcan': liftcan.LiftCanEnv,
     'door': door.DoorEnv,
     'snake': snake.SnakeEnv,
     'beam_balance': beam_balance.BeamBalanceEnv
 }
 
-robot_choices = {
+robot = {
     'baxter': baxter.BaxterEnv,
     'darwin': darwin.DarwinEnv,
     'claw': claw.ClawEnv,
@@ -35,4 +36,9 @@ def main(env, steps=1000):
         counter += 1
 
 if __name__ == "__main__":
-    main(task_choices["beam_balance"])
+    # task["door"] is an environment for the task of opening a door
+    # robot["hand"] is an environment which includes a hand as well as an object on a table (pick-n-place task)
+    if sys.argv[1] == "door":
+        main(task["door"])
+    elif sys.argv[1] == "hand":
+        main(robot["hand"])

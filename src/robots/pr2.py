@@ -6,7 +6,7 @@ class Pr2Env(mujoco_env.MujocoEnv, utils.EzPickle):
     def __init__(self):
         utils.EzPickle.__init__(self)
         #second param is frameskip
-        mujoco_env.MujocoEnv.__init__(self, 'PR2/pr2_arm.xml', 2)
+        mujoco_env.MujocoEnv.__init__(self, 'PR2/pr2.xml', 2)
 
     def _step(self, a):
         reward = 1
