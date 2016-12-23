@@ -5,6 +5,7 @@ The purpose is to evaluate how well the various RL algorithms work on robotics-l
 
 #Installation
 You will need the following things in order to use RLG:
+
 1. [A MuJoCo License](https://www.roboti.us/license.html) in order to activate the `mjpro131` folder
 2. [OpenAI Gym](https://gym.openai.com/docs)
 3. Gym's MuJoCo Interface which includes [mujoco-py](https://github.com/openai/mujoco-py)
