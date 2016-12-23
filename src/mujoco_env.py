@@ -41,7 +41,6 @@ class MujocoEnv(gym.Env):
         self.obs_dim = observation.size
 
         bounds = self.model.actuator_ctrlrange.copy()
-        print bounds
         low = bounds[:, 0]
         high = bounds[:, 1]
         self.action_space = spaces.Box(low, high)

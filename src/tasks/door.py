@@ -6,7 +6,7 @@ class DoorEnv(mujoco_env.MujocoEnv, utils.EzPickle):
     def __init__(self):
         utils.EzPickle.__init__(self)
         #second param is frameskip
-        mujoco_env.MujocoEnv.__init__(self, 'door.xml', 2)
+        mujoco_env.MujocoEnv.__init__(self, 'door/door.xml', 2)
 
     def _step(self, a):
         reward = 1
@@ -27,13 +27,3 @@ class DoorEnv(mujoco_env.MujocoEnv, utils.EzPickle):
         self.viewer.cam.distance = self.model.stat.extent * 0.5
         self.viewer.cam.lookat[2] += .8
         self.viewer.cam.elevation = -20
-
-if __name__ == "__main__":
-    my_env = DoorEnv()
-    obs = my_env.reset()
-    done = False
-    while not done:
-        my_env.render()
-        action = my_env.action_space.sample()
-        print action
-        obs, reward, done, info = my_env.step(action)
