@@ -13,7 +13,8 @@ There are two tasks:
 1. Opening a door (currently does not have a robot in the environment), which I developed
 2. Lifting a can using a 7 degree-of-freedom robot arm, which is built using an example XML file on the MuJoCo website
 
-And here are the robots:
+And multiple robots:
+
 1. Baxter, downloaded from the MuJoCo Resources (had to edit lines 37-40 to get it to work correctly)
 2. Darwin (from MJC Resources)
 3. Hand/Claw
