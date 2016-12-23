@@ -16,9 +16,11 @@ Either run `python src/. hand` or `python src/. door` from the root folder (wher
 
 ##Available tasks and robots
 Tasks:
+
 1. Opening a door (currently does not have a robot in the environment), which I developed
 2. Lifting a can using a 7 degree-of-freedom robot arm, which is built using an example XML file on the MuJoCo website
-Robots (downloaded using MuJoCo Resources, some had errors and needed slight edits to work):
+Robots (downloaded using [MuJoCo Resources](http://www.mujoco.org/forum/index.php?resources/), some had errors and needed slight edits to work):
+
 1. Baxter
 2. Darwin
 3. Hand/Claw
@@ -28,7 +30,6 @@ Robots (downloaded using MuJoCo Resources, some had errors and needed slight edi
 7. Kinova arms
 8. Snake swimmer
 9. Beam balance
-
 
 ##Todo List
 - [ ] Incorporate OpenAI Gym tasks
