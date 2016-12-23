@@ -1,16 +1,16 @@
-#RLG
+#RLG: Robot Learning Gym
 Robot Learning Gym is a tool to test reinforcement learning algorithms for robotics tasks a la OpenAI's [Universe](https://universe.openai.com/) and/or [Gym](https://gym.openai.com).
 
 The purpose is to evaluate how well the various RL algorithms work on robotics-like tasks by using a standardized and consistent metric.
 
-#Installation
+##Installation
 You will need the following things in order to use RLG:
 
 1. [A MuJoCo License](https://www.roboti.us/license.html) in order to activate the `mjpro131` folder
 2. [OpenAI Gym](https://gym.openai.com/docs)
 3. Gym's MuJoCo Interface which includes [mujoco-py](https://github.com/openai/mujoco-py)
 
-##Usage
+###Usage
 If all goes well, you should be able to run the `src/__main__.py` script of this package.
 Either run `python src/. hand` or `python src/. door` from the root folder (where ever you cloned this repository). Running with `hand` displays a pick-n-place task while running with `door` displays a simple hinged door.
 
@@ -33,6 +33,7 @@ Robots (downloaded using [MuJoCo Resources](http://www.mujoco.org/forum/index.ph
 9. Beam balance
 
 ##Todo List
+RLG is still in development, and the following is a list of features to be implemented based on what is easiest and most important
 - [ ] Incorporate MuJoCo OpenAI Gym tasks (at least the ones that are semi-robotic)
 - [ ] Create a system where users can ask for tasks based on difficulty
 - [ ] Clean up API, allow easy testing of algorithms like Gym
