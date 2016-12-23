@@ -16,20 +16,5 @@
         <light cutoff="100" diffuse="1 1 1" directional="true" exponent="1" specular=".1 .1 .1"/>
         <light directional="false" dir="4 4 4" pos="4 4 4" />
         <geom condim="3" friction="1 .1 .1" material="MatPlane" name="floor" pos="0 0 0" rgba="0.8 0.9 0.8 1" size="20 20 0.125" type="plane"/>
-        <body>
-            <geom type="box" pos="3.25 4 4" size="0.1 0.08 1.2"/> <!-- left post -->
-            <geom type="box" pos="4.85 4 4"  size="0.1 0.08 1.2"/> <!-- right post -->
-            <geom type="box" pos="4 4 5.1" size="0.8 0.1 0.1" /> <!-- upper post -->
-            <geom type="box" pos="4 4 3" size="0.8 0.1 0.1"/> <!-- lower post -->
-            <body>
-                <geom type="box" pos="4 4 4" size="0.75 0.01 1" rgba="0.5 0.5 0.5 0.5"/>
-                <!-- <geom type="sphere" pos="3.55 3.95 3.95" size="0.05"/> -->
-                <!--<joint name="doorhinge" type="hinge" pos="3.25 4 4" axis="0 0 1" frictional="true" frictionloss="3" damping="1"/>-->
-                <joint name="doorhinge" type="hinge" pos="3.25 4 4" axis="0 0 1"/>
-            </body>
-        </body>
     </worldbody>
-    <actuator>
-        <motor joint="doorhinge" ctrlrange="9 10"/>
-    </actuator>
 </mujoco>

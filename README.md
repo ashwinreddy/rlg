@@ -42,4 +42,5 @@ Robots (downloaded using [MuJoCo Resources](http://www.mujoco.org/forum/index.ph
 - [ ] Implement more tasks and define reward functions for all tasks
 - [ ] Allow mix-and-match for robots and tasks
 - [ ] Develop code to facilitate transfer learning (group tasks by similarity)
-- [ ] Implement various RL algorithms as benchmarks 
+- [ ] Implement various RL algorithms as benchmarks
+- [ ] Incorporate a build system like Buck or Make
