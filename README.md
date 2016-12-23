@@ -4,11 +4,10 @@ Robot Learning Gym is a tool to test reinforcement learning algorithms for robot
 The purpose is to evaluate how well the various RL algorithms work on robotics-like tasks by using a standardized and consistent metric.
 
 #Installation
-You will need MuJoCo for this to work. Obtain a 30 day free trial license or purchase a license from [here](https://www.roboti.us/license.html). Be sure to download the `mjpro` [folder](https://www.roboti.us/) and license keys in a clean directory (you will need to move them later).
-
-First, install OpenAI Gym using these [instructions](https://github.com/openai/gym#installation) or [these ones](https://gym.openai.com/docs).
-Next, you will need to make sure that you also have the OpenAI interface to MuJoCo. If you did a full install, this should have already been installed. Make sure that this is the case (if you are lost, use [this link](https://github.com/openai/gym#mujoco)).
-You will need `mujoco-py`, the Python bindings for MuJoCo, which is written in C++. Follow the instructions [here](https://github.com/openai/mujoco-py#obtaining-the-binaries-and-license-key)
+You will need the following things in order to use RLG:
+1. [A MuJoCo License](https://www.roboti.us/license.html) in order to activate the `mjpro131` folder
+2. [OpenAI Gym](https://gym.openai.com/docs)
+3. Gym's MuJoCo Interface which includes [mujoco-py](https://github.com/openai/mujoco-py)
 
 ##Usage
 If all goes well, you should be able to run the `src/__main__.py` script of this package.
