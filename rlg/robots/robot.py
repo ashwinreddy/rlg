@@ -1,17 +1,17 @@
 import numpy as np
 from gym import utils
-import mujoco_env
+from gym.envs.mujoco.mujoco_env import MujocoEnv
 
-class Task(mujoco_env.MujocoEnv, utils.EzPickle):
-    def __init__(self, pathname='default.xml'):
+class Robot(MujocoEnv, utils.EzPickle):
+    def __init__(self, pathname='default'):
         utils.EzPickle.__init__(self)
-        mujoco_env.MujocoEnv.__init__(self, pathname + '/' + pathname + '.xml', 2)
+        MujocoEnv.__init__(self, pathname + '/' + pathname + '.xml', 2)
 
     def _step(self, a):
         reward = 1
         self.do_simulation(a, self.frame_skip)
         ob = self._get_obs()
-        return ob, reward, False, {}#.get_body_com("box")[2], {}
+        return ob, reward, False, {}
 
     def reset_model(self):
         qpos = self.init_qpos + self.np_random.uniform(size=self.model.nq, low=-0.01, high=0.01)

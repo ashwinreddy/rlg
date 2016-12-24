@@ -5,3 +5,5 @@ The purpose is to evaluate how well various RL algorithms work on robotics (moto
 To do this, RLG supports the ability to easily add robots and tasks in order to evaluate performance on a large repertoire of tasks. This makes it possible to quickly and easily test which conditions algorithms work best and worse under.
 
 To learn more, visit the [wiki](https://github.com/ashwinreddy/rlg/wiki).
+
+**CAUTION: RLG is still in development, documentation may be incorrect, and code may be buggy**

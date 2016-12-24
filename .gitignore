@@ -2,3 +2,5 @@
 old_readme.md
 MUJOCO_LOG.TXT
 Makefile
+/dist/
+/*.egg-info

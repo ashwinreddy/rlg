@@ -4,4 +4,4 @@ import door
 import liftcan
 import snake
 
-print "tasks imported"
+print "Tasks imported..."
