@@ -1,5 +1,5 @@
 from setuptools import setup, find_packages
-# print find_packages()
+
 setup(name='rlg',
       version='1.0.a.dev',
       description='Platform for testing robot RL algorithms',

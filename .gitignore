@@ -1,5 +1,4 @@
 *.pyc
-old_readme.md
 MUJOCO_LOG.TXT
 Makefile
 /dist/

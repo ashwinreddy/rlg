@@ -3,5 +3,4 @@ import beam_balance
 import door
 import liftcan
 import snake
-
-print "Tasks imported..."
+import obstacle_course

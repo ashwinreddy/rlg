@@ -3,8 +3,6 @@ import numpy as np
 class LiftCanTask(Task):
     def __init__(self):
         Task.__init__(self, 'liftcan')
-        # print self.viewer
-        self.viewer = None
 
     def _step(self, a):
         living_cost = 0.2
