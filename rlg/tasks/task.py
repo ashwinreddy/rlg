@@ -5,11 +5,13 @@ import os
 from os import path
 
 class Task(MujocoEnv, utils.EzPickle):
-    def __init__(self, pathname='default.xml'):
+    def __init__(self, pathname='default', absoluteFilepath=False):
         utils.EzPickle.__init__(self)
-        filename = pathname + '/' + pathname + '.xml'
-        pathname = os.path.join(os.path.dirname(__file__), '..', 'assets', filename)
+        if not absoluteFilepath:
+            filename = pathname + '/' + pathname + '.xml'
+            pathname = os.path.join(os.path.dirname(__file__), '..', 'assets', filename)
         self.viewer = None
+        print pathname
         MujocoEnv.__init__(self, pathname, 2)
 
     def _step(self, a):

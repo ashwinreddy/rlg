@@ -1,6 +1,8 @@
 import numpy as np
 from gym import utils
 from gym.envs.mujoco.mujoco_env import MujocoEnv
+import os
+from os import path
 
 class Robot(MujocoEnv, utils.EzPickle):
     def __init__(self, pathname='default'):

@@ -1,10 +1,13 @@
 from gym.envs.mujoco.mujoco_env import MujocoEnv
 import sys
 import tasks
+from tasks.task import Task
 import robots
 import agents
+import os
 
 __version__ = "1.0.a.dev"
+__all__ = ['tasks', 'robots', 'agents']
 
 task = {
     'liftcan': tasks.liftcan.LiftCanTask,

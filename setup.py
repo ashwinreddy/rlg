@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(name='rlg',
-      version='1.0.a.dev',
+      version='1.1.a',
       description='Platform for testing robot RL algorithms',
       url='http://github.com/ashwinreddy/rlg',
       author='Ashwin Reddy',
