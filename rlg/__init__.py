@@ -1,7 +1,7 @@
 from gym.envs.mujoco.mujoco_env import MujocoEnv
 import sys
 import tasks
-import robots #import baxter, darwin, claw, hand, barrett, sandia_hand, atlas, atlas_virtual, pr2, jaco
+import robots
 import agents
 
 __version__ = "1.0.a.dev"

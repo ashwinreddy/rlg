@@ -5,7 +5,10 @@ from gym.envs.mujoco.mujoco_env import MujocoEnv
 class Robot(MujocoEnv, utils.EzPickle):
     def __init__(self, pathname='default'):
         utils.EzPickle.__init__(self)
-        MujocoEnv.__init__(self, pathname + '/' + pathname + '.xml', 2)
+        filename = pathname + '/' + pathname + '.xml'
+        pathname = os.path.join(os.path.dirname(__file__), '..', 'assets', filename)
+        self.viewer = None
+        MujocoEnv.__init__(self, pathname, 2)
 
     def _step(self, a):
         reward = 1

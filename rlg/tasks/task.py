@@ -6,11 +6,9 @@ from os import path
 
 class Task(MujocoEnv, utils.EzPickle):
     def __init__(self, pathname='default.xml'):
-        print "Task is being initialized..."
         utils.EzPickle.__init__(self)
         filename = pathname + '/' + pathname + '.xml'
         pathname = os.path.join(os.path.dirname(__file__), '..', 'assets', filename)
-        print "Loading {}".format(pathname)
         self.viewer = None
         MujocoEnv.__init__(self, pathname, 2)
 

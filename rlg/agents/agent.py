@@ -1,11 +1,11 @@
 class DefaultAgent(object):
-    def __init__(self, render=False, episode_step=1000):
+    def __init__(self, render=False, episode_steps=1000):
         self.obs = None
         self.net_reward = 0
         self.done = False
         self.render = render
         self.step_counter = 0
-        self.episode_step = episode_step
+        self.episode_steps = episode_steps
 
     def load_task(self, task):
         self.task = task
@@ -22,5 +22,5 @@ class DefaultAgent(object):
         self.step_counter += 1
 
     def run_episode(self):
-        while self.step_counter != self.episode_step:
+        while self.step_counter != self.episode_steps:
             self.step()
