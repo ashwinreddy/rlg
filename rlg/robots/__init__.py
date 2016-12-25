@@ -1,4 +1,3 @@
-import atlas_virtual
 import atlas
 import barrett
 import baxter

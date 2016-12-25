@@ -26,7 +26,7 @@ robot = {
     # NOTE: sandia_hand is currently defective
     'sandia_hand': robots.sandia_hand.SandiaHandRobot,
     'atlas': robots.atlas.AtlasRobot,
-    'atlas_virtual': robots.atlas_virtual.AtlasVirtualRobot,
+    'atlas_virtual': robots.atlas.AtlasVirtualRobot,
     'pr2': robots.pr2.Pr2Robot,
     'jaco': robots.jaco.JacoRobot,
 }
