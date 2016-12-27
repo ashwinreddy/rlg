@@ -11,8 +11,8 @@ class Task(MujocoEnv, utils.EzPickle):
             filename = pathname + '/' + pathname + '.xml'
             pathname = os.path.join(os.path.dirname(__file__), '..', 'assets', filename)
         self.viewer = None
-        print pathname
         MujocoEnv.__init__(self, pathname, 2)
+        # self.spec = gym.envs.registration.EnvSpec("Task-v0")
 
     def _step(self, a):
         reward = 1

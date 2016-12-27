@@ -1,1 +1,1 @@
-from agent import DefaultAgent
+from agent import DefaultAgent, QLearner

@@ -1,27 +1,27 @@
 <!-- ======================================================
-	This file is part of MuJoCo.     
+	This file is part of MuJoCo.
 	Copyright 2009-2016 Roboti LLC.
-	
-	Model 		:: PR2 from Willow Garage 
+
+	Model 		:: PR2 from Willow Garage
 		Source		: (Provided by Sergey Levine, UC Berkeley)
 		Downloaded	: 18July'14
-		
+
 	Mujoco		:: Advanced physics simulation engine
 		Source		: www.roboti.us
 		Version		: 1.31
 		Released 	: 23Apr16
-		
+
 	Author		:: Vikash Kumar
 		Contacts 	: kumar@roboti.us
 		Last edits 	: 30Apr'16, 14Dec'15, 10Oct'15
 ====================================================== -->
 
 <mujoco model="pr2(v1.31)">
-    <compiler 	meshdir="Meshes/" 
-				coordinate="local" 
+    <compiler 	meshdir="Meshes/"
+				coordinate="local"
 				angle="radian"/>
 
-	<option timestep="0.01" 
+	<option timestep="0.01"
 			gravity="0 0 -9.81"/>
 
 	<asset>
@@ -38,26 +38,26 @@
 		<mesh file="elbow_flex.stl"/>
 		<mesh file="forearm_roll_L.stl"/>
 		<mesh file="forearm.stl"/>
-		
-		
+
+
 		<mesh file="wrist_flex.stl"/>
 		<mesh file="wrist_roll_L.stl"/>
 		<mesh file="gripper_palm.stl"/>
 		<mesh file="l_finger.stl"/>
 		<mesh file="l_finger_tip.stl"/>
-				
+
 		<material name="MatGnd" specular=".3" shininess=".3" reflectance="0.3" rgba=".5 .55 .5 1"/>
 	</asset>
-	
-	
-    <contact>       
+
+
+    <contact>
         <pair geom1="r_gripper_l_finger_tip" geom2="r_gripper_r_finger_tip"/>
 		<pair geom1="l_gripper_l_finger_tip" geom2="l_gripper_r_finger_tip"/>
 		<pair geom1="base" geom2="r_forearm"/>
 		<pair geom1="base" geom2="l_forearm"/>
-		
+
     </contact>
-  
+
     <default>
         <joint limited="false" damping=".01" armature=".005" frictional="false"/>
         <geom contype="1" conaffinity="0" friction="1 0.1 0.1" type="mesh"/>
@@ -65,11 +65,11 @@
 			<joint damping="0.005" armature=".005"/>
 		</default>
     </default>
-    
+
     <worldbody>
 	<light directional="true" cutoff="4" exponent="20" diffuse="1 1 1" specular="0 0 0" pos=".5 0.75 1.5" dir="-.5 -0.75 -1.5"/>
 	<geom name="gnd" material="MatGnd" type="plane" contype="0" conaffinity="1" pos="0 0 0" size="1.5 1.5 0.25"/>
-	
+
         <body name="base_footprint" pos="0 0 0">
             <joint name="rootx" type="slide"   pos="0 0 0" axis="1 0 0"/>
             <joint name="rooty" type="slide"   pos="0 0 0" axis="0 1 0"/>
@@ -79,73 +79,7 @@
             <body name="base_link" pos="0 0 0.051">
                 <inertial pos="-0.061 0 0.293" quat="0.973598 0.001764 -0.228065 -0.009443" mass="116" diaginertia="6.293885 5.669245 3.041772" />
                 <geom name="base" rgba="1 1 1 1" mesh="base_L" contype="0"/>
-                <!--<geom name="geom1fa" type="capsule" pos="-0.07672349 0 0.19886751" quat="0 0.86906109 0 0.49470478" size="0.42951756 0.18367422" rgba="1 0 0 1" group="2"/>
-                <geom name="geom1fb" type="box" pos="-0.07672349 0 0.19886751" quat="0 0.86906109 0 0.49470478" size="0.30240801 0.33412111 0.45479645" rgba="1 0 0 1" group="2"/>-->
                 <geom name="geom1f" type="box" pos="0 0 0.1" size="0.34 0.34 0.15" rgba="1 1 0.1 1" group="1"/>
-                <!--body name="base_laser_link" pos="0.275 0 0.252">
-                    <inertial pos="0 0 0" quat="0.707107 0.707107 0 0" mass="0.001" diaginertia="0.0001 0.0001 0.000001" />
-                    <geom name="geom2" type="box" pos="0 0 0" size="0.0005 0.0005 0.0005" rgba="0.8 0 0 1" />
-                </body>
-                <body name="fl_caster_rotation_link" pos="0.2246 0.2246 0.0282">
-                    <inertial pos="0 0 0.07" quat="0.589921 -0.182261 -0.205712 0.759247" mass="3.473082" diaginertia="0.015392 0.012545 0.011457" />
-                    <joint name="fl_caster_rotation_joint" type="hinge"   pos="0 0 0" axis="0 0 1"/>
-                    <geom name="geom3" mesh="caster_L" />
-                    <body name="fl_caster_l_wheel_link" pos="0 0.049 0">
-                        <inertial pos="0 0 0" quat="0.589921 -0.182261 -0.205712 0.759247" mass="0.44036" diaginertia="0.015392 0.012545 0.011457" />
-                        <joint name="fl_caster_l_wheel_joint" type="hinge"   pos="0 0 0" axis="0 1 0"/>
-                        <geom name="geom4" type="cylinder" pos="0 0 0" quat="0.707107 0.707107 0 0" size="0.074792 0.017" />
-                    </body>
-                    <body name="fl_caster_r_wheel_link" pos="0 -0.049 0">
-                        <inertial pos="0 0 0" quat="0.589921 -0.182261 -0.205712 0.759247" mass="0.44036" diaginertia="0.015392 0.012545 0.011457" />
-                        <joint name="fl_caster_r_wheel_joint" type="hinge"   pos="0 0 0" axis="0 1 0"/>
-                        <geom name="geom5" type="cylinder" pos="0 0 0" quat="0.707107 0.707107 0 0" size="0.074792 0.017" />
-                    </body>
-                </body>
-                <body name="fr_caster_rotation_link" pos="0.2246 -0.2246 0.0282">
-                    <inertial pos="0 0 0.07" quat="0.589921 -0.182261 -0.205712 0.759247" mass="3.473082" diaginertia="0.015392 0.012545 0.011457" />
-                    <joint name="fr_caster_rotation_joint" type="hinge"   pos="0 0 0" axis="0 0 1"/>
-                    <geom name="geom6" mesh="caster_L" />
-                    <body name="fr_caster_l_wheel_link" pos="0 0.049 0">
-                        <inertial pos="0 0 0" quat="0.589921 -0.182261 -0.205712 0.759247" mass="0.44036" diaginertia="0.015392 0.012545 0.011457" />
-                        <joint name="fr_caster_l_wheel_joint" type="hinge"   pos="0 0 0" axis="0 1 0"/>
-                        <geom name="geom7" type="cylinder" pos="0 0 0" quat="0.707107 0.707107 0 0" size="0.074792 0.017" />
-                    </body>
-                    <body name="fr_caster_r_wheel_link" pos="0 -0.049 0">
-                        <inertial pos="0 0 0" quat="0.589921 -0.182261 -0.205712 0.759247" mass="0.44036" diaginertia="0.015392 0.012545 0.011457" />
-                        <joint name="fr_caster_r_wheel_joint" type="hinge"   pos="0 0 0" axis="0 1 0"/>
-                        <geom name="geom8" type="cylinder" pos="0 0 0" quat="0.707107 0.707107 0 0" size="0.074792 0.017" />
-                    </body>
-                </body>
-                <body name="bl_caster_rotation_link" pos="-0.2246 0.2246 0.0282">
-                    <inertial pos="0 0 0.07" quat="0.589921 -0.182261 -0.205712 0.759247" mass="3.473082" diaginertia="0.015392 0.012545 0.011457" />
-                    <joint name="bl_caster_rotation_joint" type="hinge"   pos="0 0 0" axis="0 0 1"/>
-                    <geom name="geom9" mesh="caster_L" />
-                    <body name="bl_caster_l_wheel_link" pos="0 0.049 0">
-                        <inertial pos="0 0 0" quat="0.589921 -0.182261 -0.205712 0.759247" mass="0.44036" diaginertia="0.015392 0.012545 0.011457" />
-                        <joint name="bl_caster_l_wheel_joint" type="hinge"   pos="0 0 0" axis="0 1 0"/>
-                        <geom name="geom10" type="cylinder" pos="0 0 0" quat="0.707107 0.707107 0 0" size="0.074792 0.017" />
-                    </body>
-                    <body name="bl_caster_r_wheel_link" pos="0 -0.049 0">
-                        <inertial pos="0 0 0" quat="0.589921 -0.182261 -0.205712 0.759247" mass="0.44036" diaginertia="0.015392 0.012545 0.011457" />
-                        <joint name="bl_caster_r_wheel_joint" type="hinge"   pos="0 0 0" axis="0 1 0"/>
-                        <geom name="geom11" type="cylinder" pos="0 0 0" quat="0.707107 0.707107 0 0" size="0.074792 0.017" />
-                    </body>
-                </body>
-                <body name="br_caster_rotation_link" pos="-0.2246 -0.2246 0.0282">
-                    <inertial pos="0 0 0.07" quat="0.589921 -0.182261 -0.205712 0.759247" mass="3.473082" diaginertia="0.015392 0.012545 0.011457" />
-                    <joint name="br_caster_rotation_joint" type="hinge"   pos="0 0 0" axis="0 0 1"/>
-                    <geom name="geom12" mesh="caster_L" />
-                    <body name="br_caster_l_wheel_link" pos="0 0.049 0">
-                        <inertial pos="0 0 0" quat="0.589921 -0.182261 -0.205712 0.759247" mass="0.44036" diaginertia="0.015392 0.012545 0.011457" />
-                        <joint name="br_caster_l_wheel_joint" type="hinge"   pos="0 0 0" axis="0 1 0"/>
-                        <geom name="geom13" type="cylinder" pos="0 0 0" quat="0.707107 0.707107 0 0" size="0.074792 0.017" />
-                    </body>
-                    <body name="br_caster_r_wheel_link" pos="0 -0.049 0">
-                        <inertial pos="0 0 0" quat="0.589921 -0.182261 -0.205712 0.759247" mass="0.44036" diaginertia="0.015392 0.012545 0.011457" />
-                        <joint name="br_caster_r_wheel_joint" type="hinge"   pos="0 0 0" axis="0 1 0"/>
-                        <geom name="geom14" type="cylinder" pos="0 0 0" quat="0.707107 0.707107 0 0" size="0.074792 0.017" />
-                    </body>
-                </body-->
                 <body name="torso_lift_link" pos="-0.05 0 0.739675">
                     <inertial pos="-0.1 0 -0.0885" quat="0.999335 0.007626 0.035453 0.003712" mass="36.248046" diaginertia="2.783075 2.510450 0.514581" />
                     <joint name="torso_lift_joint" type="slide" pos="0 0 0" axis="0 0 1" limited="true" range="0 0.31"/>
@@ -153,91 +87,6 @@
                     <!--geom name="geom15f" type="capsule" pos="-0.12326594 0 -0.08635105" quat="0.99742953 0 0.07165425 0" size="0.29128166 0.26561864" rgba="0.9 0.9 0.9 1" group="1"/-->
                     <!--geom name="geom15f" type="box" pos="-0.12326594 0 -0.08635105" quat="0.99742953 0 0.07165425 0" size="0.19755489 0.26362795 0.42803352" rgba="0.9 0.9 0.9 1" group="1"/-->
                     <geom name="geom15f" type="box" pos="-0.09 0 -0.08635105" size="0.19755489 0.26362795 0.42803352" rgba="0.9 0.9 0.9 1" group="1"/>
-                    <!--body name="imu_link" pos="-0.02977 -0.1497 0.164" quat="0 0 -1 0">
-                        <inertial pos="0 0 0" quat="0.707107 0.707107 0 0" mass="0.001" diaginertia="0.0001 0.0001 0.000001" />
-                        <geom name="geom16" type="box" pos="0 0 0" size="0.0005 0.0005 0.0005" rgba="0.8 0 0 1" />
-                    </body-->
-                    <!--body name="head_pan_link" pos="-0.01707 0 0.38145">
-                        <inertial pos="-0.005717 0.010312 -0.029649" quat="-0.145270 0.703536 0.077046 0.691373" mass="1.611118" diaginertia="0.008652 0.005234 0.004779" />
-                        <joint name="head_pan_joint" type="hinge" pos="0 0 0" axis="0 0 1" limited="true" range="-3.007 3.007"/>
-                        <geom name="geom17" rgba="0 0 0.8 1" mesh="head_pan_L" />
-                        <body name="head_tilt_link" pos="0.068 0 0">
-                            <inertial pos="0.041935 0.003569 0.028143" quat="0.538183 -0.126356 -0.109825 0.826034" mass="1.749727" diaginertia="0.012028 0.011145 0.004820" />
-                            <joint name="head_tilt_joint" type="hinge" pos="0 0 0" axis="0 1 0" limited="true" range="-0.471238 1.39626"/>
-                            <geom name="geom18" rgba="0 0.8 0 1" mesh="head_tilt_L" />
-                            <body name="head_plate_frame" pos="0.0232 0 0.0645">
-                                <inertial pos="0 0 0" mass="0.01" diaginertia="0.001 0.001 0.001" />
-                                <geom name="geom19" type="box" pos="0 0 0" size="0.005 0.005 0.005" rgba="0 0 0.8 1" />
-                                <body name="sensor_mount_link" pos="0 0 0">
-                                    <inertial pos="0 0 0" quat="0.5 0.5 -0.5 0.5" mass="0.05" diaginertia="0.004 0.004 0.004" />
-                                    <geom name="geom20" type="box" pos="0 0 0" size="0.005 0.005 0.005" rgba="0 0 0.8 1" />
-                                    <body name="high_def_frame" pos="0 -0.109 0.035">
-                                        <inertial pos="0 0 0" mass="0.01" diaginertia="0.001 0.001 0.001" />
-                                        <geom name="geom21" type="box" pos="0 0 0" size="0.005 0.005 0.005" rgba="0 0 0.8 1" />
-                                        <body name="high_def_optical_frame" pos="0 0 0" quat="0.5 -0.5 -0.5 -0.5">
-                                            <inertial pos="0 0 0" mass="0.01" diaginertia="0.001 0.001 0.001" />
-                                            <geom name="geom22" type="box" pos="0 0 0" size="0.005 0.005 0.005" rgba="0 0 0.8 1" />
-                                        </body>
-                                    </body>
-                                    <body name="double_stereo_link" pos="0 0 0.003">
-                                        <inertial pos="0 0 0" quat="0.5 0.5 -0.5 0.5" mass="0.1" diaginertia="0.004 0.004 0.004" />
-                                        <geom name="geom23" type="box" pos="-0.01 0 0.025" size="0.01 0.06 0.025" rgba="0 0 0.8 1" />
-                                        <body name="wide_stereo_link" pos="0 0.03 0.0305">
-                                            <inertial pos="0 0 0" mass="0.1" diaginertia="0.01 0.01 0.01" />
-                                            <geom name="geom24" type="box" pos="0 0 0" size="0.0005 0.0005 0.0005" rgba="0 0 0.8 1" />
-                                            <body name="wide_stereo_optical_frame" pos="0 0 0" quat="0.5 -0.5 -0.5 -0.5">
-                                                <inertial pos="0 0 0" mass="0.001" diaginertia="0.000000 0.000000 0.000000" />
-                                            </body>
-                                            <body name="wide_stereo_gazebo_l_stereo_camera_frame" pos="0 0 0">
-                                                <inertial pos="0 0 0" mass="0.01" diaginertia="0.001 0.001 0.001" />
-                                                <geom name="geom25" type="box" pos="0 0 0" size="0.005 0.005 0.005" />
-                                                <body name="wide_stereo_gazebo_l_stereo_camera_optical_frame" pos="0 0 0" quat="0.5 -0.5 -0.5 -0.5">
-                                                    <inertial pos="0 0 0" mass="0.001" diaginertia="0.000000 0.000000 0.000000" />
-                                                </body>
-                                                <body name="wide_stereo_gazebo_r_stereo_camera_frame" pos="0 -0.09 0">
-                                                    <inertial pos="0 0 0" mass="0.01" diaginertia="0.001 0.001 0.001" />
-                                                    <geom name="geom26" type="box" pos="0 0 0" size="0.005 0.005 0.005" />
-                                                    <body name="wide_stereo_gazebo_r_stereo_camera_optical_frame" pos="0 0 0" quat="0.5 -0.5 -0.5 -0.5">
-                                                        <inertial pos="0 0 0" mass="0.001" diaginertia="0.000000 0.000000 0.000000" />
-                                                    </body>
-                                                </body>
-                                            </body>
-                                        </body>
-                                        <body name="narrow_stereo_link" pos="0 0.06 0.0305">
-                                            <inertial pos="0 0 0" mass="0.1" diaginertia="0.01 0.01 0.01" />
-                                            <geom name="geom27" type="box" pos="0 0 0" size="0.0005 0.0005 0.0005" rgba="0 0 0.8 1" />
-                                            <body name="narrow_stereo_optical_frame" pos="0 0 0" quat="0.5 -0.5 -0.5 -0.5">
-                                                <inertial pos="0 0 0" mass="0.001" diaginertia="0.000000 0.000000 0.000000" />
-                                            </body>
-                                            <body name="narrow_stereo_gazebo_l_stereo_camera_frame" pos="0 0 0">
-                                                <inertial pos="0 0 0" mass="0.01" diaginertia="0.001 0.001 0.001" />
-                                                <geom name="geom28" type="box" pos="0 0 0" size="0.005 0.005 0.005" />
-                                                <body name="narrow_stereo_gazebo_l_stereo_camera_optical_frame" pos="0 0 0" quat="0.5 -0.5 -0.5 -0.5">
-                                                    <inertial pos="0 0 0" mass="0.001" diaginertia="0.000000 0.000000 0.000000" />
-                                                </body>
-                                                <body name="narrow_stereo_gazebo_r_stereo_camera_frame" pos="0 -0.09 0">
-                                                    <inertial pos="0 0 0" mass="0.01" diaginertia="0.001 0.001 0.001" />
-                                                    <geom name="geom29" type="box" pos="0 0 0" size="0.005 0.005 0.005" />
-                                                    <body name="narrow_stereo_gazebo_r_stereo_camera_optical_frame" pos="0 0 0" quat="0.5 -0.5 -0.5 -0.5">
-                                                        <inertial pos="0 0 0" mass="0.001" diaginertia="0.000000 0.000000 0.000000" />
-                                                    </body>
-                                                </body>
-                                            </body>
-                                        </body>
-                                    </body>
-                                </body>
-                            </body>
-                        </body>
-                    </body-->
-                    <!--body name="laser_tilt_mount_link" pos="0.09893 0 0.227">
-                        <inertial pos="-0.03 0 -0.03" quat="0.707107 0.707107 0 0" mass="0.05" diaginertia="0.0001 0.0001 0.00001" />
-                        <joint name="laser_tilt_mount_joint" type="hinge" pos="0 0 0" axis="0 1 0" limited="true" range="-0.7854 1.48353"/>
-                        <geom name="geom30" rgba="0.8 0 0 1" mesh="tilting_hokuyo_L" />
-                        <body name="laser_tilt_link" pos="0 0 0.03">
-                            <inertial pos="0 0 0" quat="0.707107 0.707107 0 0" mass="0.001" diaginertia="0.0001 0.0001 0.000001" />
-                            <geom name="geom31" type="box" pos="0 0 0" size="0.0005 0.0005 0.0005" rgba="0.8 0 0 1" />
-                        </body>
-                    </body-->
                     <body name="r_shoulder_pan_link" pos="0 -0.188 0">
                         <inertial pos="-0.001201 0.024513 -0.098231" quat="0.927482 -0.087656 0.074060 -0.355821" mass="25.799322" diaginertia="0.934201 0.837701 0.242033" />
                         <joint name="r_shoulder_pan_joint" type="hinge" pos="0 0 0" axis="0 0 1" limited="true" range="-2.285398 0.714602"/>
@@ -418,33 +267,12 @@
                                                                     <inertial pos="0.00423 -0.00284 0" quat="-0.249588 0.661594 0.249588 0.661594" mass="0.04419" diaginertia="0.000015 0.000015 0.000003" />
                                                                     <joint name="l_gripper_r_finger_tip_joint" type="hinge" pos="0 0 0" axis="0 0 -1" limited="true" range="-.548 0"/>
                                                                     <geom name="l_gripper_r_finger_tip" euler="3.14 0 0" rgba="0 0.8 0 1" mesh="l_finger_tip" />
-                                                                    <!--body name="l_gripper_l_finger_tip_frame" pos="0 0 0">
-                                                                        <inertial pos="0 0 0" mass="0.001" diaginertia="0.000000 0.000000 0.000000" />
-                                                                        <joint name="l_gripper_joint" type="slide" pos="0 0 0" axis="0 1 0" limited="true" range="0 0.09"/>
-                                                                    </body-->
                                                                 </body>
                                                             </body>
-                                                            <!--body name="l_gripper_l_parallel_link" pos="0.05891 0.031 0">
-                                                                <inertial pos="0.03598 0.0173 -0.00164" quat="0.574440 0.429111 0.518782 0.465562" mass="0.17126" diaginertia="0.000198 0.000181 0.000077" />
-                                                                <joint name="l_gripper_l_parallel_root_joint" type="hinge" pos="0 0 0" axis="0 0 1" limited="true" range="0 0.548"/>
-                                                                <geom name="geom65" type="box" pos="0.045747 0 0" quat="0.999634 0 0 0.027058" size="0.045747 0.0025 0.0025" />
-                                                            </body>
-                                                            <body name="l_gripper_r_parallel_link" pos="0.05891 -0.031 0">
-                                                                <inertial pos="0.03576 -0.01736 -0.00095" quat="0.474684 0.510909 0.446353 0.560727" mass="0.17389" diaginertia="0.000199 0.000181 0.000077" />
-                                                                <joint name="l_gripper_r_parallel_root_joint" type="hinge" pos="0 0 0" axis="0 0 -1" limited="true" range="0 0.548"/>
-                                                                <geom name="geom66" type="box" pos="0.045747 0 0" quat="0.999634 0 0 -0.027058" size="0.045747 0.0025 0.0025" />
-                                                            </body-->
                                                         </body>
                                                     </body>
                                                 </body>
                                             </body>
-                                            <!--body name="l_forearm_cam_frame" pos="0.135 0 0.044" quat="0.679288 -0.679288 0.196387 -0.196387">
-                                                <inertial pos="0 0 0" mass="0.01" diaginertia="0.001 0.001 0.001" />
-                                                <geom name="geom67" type="box" pos="0 0 0" size="0.005 0.005 0.005" />
-                                                <body name="l_forearm_cam_optical_frame" pos="0 0 0" quat="0.5 -0.5 -0.5 -0.5">
-                                                    <inertial pos="0 0 0" mass="0.001" diaginertia="0.000000 0.000000 0.000000" />
-                                                </body>
-                                            </body-->
                                         </body>
                                     </body>
                                 </body>
@@ -455,4 +283,33 @@
             </body>
         </body>
     </worldbody>
+    <actuator>
+        <motor joint="rootx" ctrlrange="0.0 0.0"/>
+        <motor joint="rooty" ctrlrange="0.0 0.0"/>
+        <motor joint="rootwz" ctrlrange="0.0 0.0"/>
+        <motor joint="torso_lift_joint" ctrlrange="0.0 0.31"/>
+        <motor joint="r_shoulder_pan_joint" ctrlrange="-2.285398 0.714602"/>
+        <motor joint="r_shoulder_lift_joint" ctrlrange="-0.5236 1.3963"/>
+        <motor joint="r_upper_arm_roll_joint" ctrlrange="-3.9 0.8"/>
+        <motor joint="r_elbow_flex_joint" ctrlrange="-2.3213 0.0"/>
+        <motor joint="r_forearm_roll_joint" ctrlrange="0.0 0.0"/>
+        <motor joint="r_wrist_flex_joint" ctrlrange="-2.094 0.0"/>
+        <motor joint="r_wrist_roll_joint" ctrlrange="0.0 0.0"/>
+        <motor joint="r_gripper_l_finger_joint" ctrlrange="0.0 0.548"/>
+        <motor joint="r_gripper_l_finger_tip_joint" ctrlrange="-0.548 0.0"/>
+        <motor joint="r_gripper_r_finger_joint" ctrlrange="0.0 0.548"/>
+        <motor joint="r_gripper_r_finger_tip_joint" ctrlrange="-0.548 0.0"/>
+        <motor joint="l_shoulder_pan_joint" ctrlrange="-0.714602 2.285398"/>
+        <motor joint="l_shoulder_lift_joint" ctrlrange="-0.5236 1.3963"/>
+        <motor joint="l_upper_arm_roll_joint" ctrlrange="-0.8 3.9"/>
+        <motor joint="l_elbow_flex_joint" ctrlrange="-2.3213 0.0"/>
+        <motor joint="l_forearm_roll_joint" ctrlrange="0.0 0.0"/>
+        <motor joint="l_wrist_flex_joint" ctrlrange="-2.094 0.0"/>
+        <motor joint="l_wrist_roll_joint" ctrlrange="0.0 0.0"/>
+        <motor joint="l_gripper_l_finger_joint" ctrlrange="0.0 0.548"/>
+        <motor joint="l_gripper_l_finger_tip_joint" ctrlrange="-0.548 0.0"/>
+        <motor joint="l_gripper_r_finger_joint" ctrlrange="0.0 0.548"/>
+        <motor joint="l_gripper_r_finger_tip_joint" ctrlrange="-0.548 0.0"/>
+
+    </actuator>
 </mujoco>
