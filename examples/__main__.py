@@ -1,22 +1,30 @@
 import numpy as np
 import rlg
 import os
+import tensorflow as tf
+
+r = tf.placeholder(tf.float32, shape=())
+tf.summary.scalar('reward', r)
+merged = tf.summary.merge_all()
+init = tf.global_variables_initializer()
+
+writer = tf.summary.FileWriter('./data/random_hard')
+
 agent = rlg.agents.DefaultAgent(True)
 
-class PegInsertionTask(rlg.tasks.task.Task):
-    def __init__(self):
-        self.viewer = None
-        rlg.tasks.task.Task.__init__(self, os.path.dirname(__file__) + '/example.xml', True)
-
-    def _step(self, a):
-        reward = 1/(np.sum(self.get_body_com("ball") - np.array([0.0, 0.3, -0.35]))**2)
-        self.do_simulation(a, self.frame_skip)
-        ob = self._get_obs()
-        return ob, reward, False, {}
-
-agent.load_task(PegInsertionTask(), '/tmp/experiment_1')
-for episode in xrange(1):
-    for t in xrange(200):
-        agent.task.render()
+agent.load_task(rlg.make('PegInsertion-v0'), './gym_data/random_experiment_cartpole')
+print agent.episode_steps#, agent.task.envspec.timestep_limit
+sess = tf.Session()
+sess.run(init)
+for episode in xrange(10):
+    agent.reset()
+    for t in xrange(agent.episode_steps):
+        # agent.task.render()
         s_prime, reward, done, info = agent.step()
-        print reward
+        with open("./file_data/random.csv", "a") as f:
+            f.write("{}, {}, {}\n".format(episode, t, reward))
+        summary = sess.run(merged, feed_dict={r: reward})
+        writer.add_summary(summary, t)
+        #if done:
+        #    agent.reset()
+sess.close()

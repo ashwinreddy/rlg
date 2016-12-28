@@ -4,13 +4,12 @@ import tensorflow as tf
 import tflearn
 
 class DefaultAgent(object):
-    def __init__(self, render=False, episode_steps=1000):
+    def __init__(self, render=False):
         self.obs = None
         self.net_reward = 0
         self.done = False
         self.render = render
         self.step_counter = 0
-        self.episode_steps = episode_steps
         self.action = None
 
     def load_task(self, task, directory):
@@ -18,6 +17,11 @@ class DefaultAgent(object):
         self.monitor = gym.wrappers.Monitor(directory, force=True, video_callable=lambda count: count % 100)(task)
         # self.task.monitor.start('/tmp/task-experiment')
         self.obs =  self.task.reset()
+        self.episode_steps = task.spec.timestep_limit
+
+    def reset(self):
+        self.obs = self.task.reset()
+        self.step_counter = 0
 
     def act(self, **kargs):
         a = kargs['action_space'].sample()
@@ -39,30 +43,3 @@ class DefaultAgent(object):
 
     def done(self):
         self.task.close()
-        # self.task.monitor.close()
-
-class QLearner(DefaultAgent):
-    def __init__(self, render=False, episode_steps=1000):
-        DefaultAgent.__init__(self, render, episode_steps)
-        self.network = self.model()
-        self.gamma   = 0.9
-
-    def model(self):
-        input_data = tflearn.input_data(shape=[None, 31])
-        fc1 = tflearn.fully_connected(input_data, 64)
-        fc2 = tflearn.fully_connected(fc1, 9)
-        net = tflearn.regression(fc2)
-        model = tflearn.DNN(net)
-        return model
-
-    def load_task(self, task, directory):
-        DefaultAgent.load_task(self, task, directory)
-        self.s = self.obs
-        self.s_prime = None
-        self.done = False
-
-    def step(self):
-        return DefaultAgent.step(self)
-
-    def act(self, **kargs):
-        return kargs['action_space'].sample()

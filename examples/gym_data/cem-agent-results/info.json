@@ -1,0 +1,1 @@
+{"env_id": "PegInsertion-v0", "params": {"n_iter": 10, "elite_frac": 0.2, "batch_size": 25}, "argv": ["cem.py"]}
