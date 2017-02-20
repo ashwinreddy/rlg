@@ -6,6 +6,9 @@ from tasks.task import Task
 import robots
 import agents
 import os
+import logging
+logger = logging.getLogger()
+logger.setLevel(logging.DEBUG)
 
 __version__ = "1.0.a.dev"
 __all__ = ['tasks', 'robots', 'agents']

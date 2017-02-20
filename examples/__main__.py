@@ -2,6 +2,10 @@ import numpy as np
 import rlg
 import os
 import tensorflow as tf
+import logging
+logger = logging.getLogger()
+logger.setLevel(logging.DEBUG)
+logger.info("Starting...")
 
 r = tf.placeholder(tf.float32, shape=())
 tf.summary.scalar('reward', r)

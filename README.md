@@ -1,4 +1,4 @@
-#RLG: Robot Learning Gym
+# RLG: Robot Learning Gym
 Robot Learning Gym is a tool to test reinforcement learning algorithms for robotics tasks a la OpenAI's [Universe](https://universe.openai.com/) and/or [Gym](https://gym.openai.com).
 
 The purpose is to evaluate how well various RL algorithms work on robotics (motor/manipulation) tasks by using standardized and consistent metrics.
@@ -7,3 +7,11 @@ To do this, RLG supports the ability to easily add robots and tasks in order to 
 To learn more, visit the [wiki](https://github.com/ashwinreddy/rlg/wiki).
 
 **CAUTION: RLG is still in development, documentation may be incorrect, and code may be buggy**
+
+---
+
+Dependencies:
+- MuJoCo
+- TensorFlow 1.0 (previous versions won't work)
+- OpenAI Gym
+- Others (will update soon)
