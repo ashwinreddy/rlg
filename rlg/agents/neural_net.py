@@ -1,0 +1,2 @@
+class NeuralNet(object):
+    pass
