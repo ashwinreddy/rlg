@@ -1,3 +1,4 @@
+# Deep Deterministic Policy Gradient Method
 from __future__ import print_function
 from collections import deque
 
@@ -14,7 +15,7 @@ env_name = 'PegInsertion-v0'
 env = rlg.make(env_name)
 
 sess      = tf.Session()
-optimizer = tf.train.AdamOptimizer(learning_rate=0.0001)
+optimizer = tf.train.AdamOptimizer(learning_rate=0.001)
 writer    = tf.summary.FileWriter("/tmp/{}-experiment-1".format(env_name))
 
 state_dim  = env.observation_space.shape[0]
@@ -109,7 +110,7 @@ for i_episode in xrange(MAX_EPISODES):
       total_rewards = 0
       state = env.reset()
       for t in xrange(MAX_STEPS):
-        # env.render()
+        env.render()
         action = pg_ddpg.sampleAction(state[np.newaxis,:], exploration=False)
         next_state, reward, done, _ = env.step(action)
         total_rewards += reward
